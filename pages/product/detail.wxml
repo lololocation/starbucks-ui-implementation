@@ -1,0 +1,93 @@
+<view class="container">
+  <view class="product-detail">
+    <!-- 商品图片 -->
+    <view class="product-image-container">
+      <view class="product-image">☕ {{product.name}}</view>
+    </view>
+
+    <!-- 商品基本信息 -->
+    <view class="product-info">
+      <view class="product-header">
+        <text class="product-name">{{product.name}}</text>
+        <text class="product-price">¥{{product.price}}</text>
+      </view>
+      <view class="product-category">{{product.category}}</view>
+      <view class="product-description">{{product.desc}}</view>
+    </view>
+
+    <!-- 详细介绍 -->
+    <view class="section detail-section">
+      <view class="section-title">📋 商品介绍</view>
+      <view class="detail-content">{{product.detailDesc}}</view>
+    </view>
+
+    <!-- 规格选择 -->
+    <view class="section size-section">
+      <view class="section-title">📏 规格选择</view>
+      <view class="size-options">
+        <block wx:for="{{product.sizes}}" wx:key="index">
+          <view 
+            class="size-option {{currentIndex == index ? 'active' : ''}}" 
+            data-index="{{index}}"
+            bindtap="switchSize"
+          >
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 数量选择 -->
+    <view class="section quantity-section">
+      <view class="section-title">🔢 数量</view>
+      <view class="quantity-control">
+        <view class="quantity-btn" bindtap="decreaseQuantity">-</view>
+        <view class="quantity-num">{{quantity}}</view>
+        <view class="quantity-btn" bindtap="increaseQuantity">+</view>
+      </view>
+    </view>
+
+    <!-- 配料信息 -->
+    <view class="section ingredients-section">
+      <view class="section-title">🍪 配料</view>
+      <view class="ingredients-list">
+        <block wx:for="{{product.ingredients}}" wx:key="index">
+          <view class="ingredient-item">• {{item}}</view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 营养信息 -->
+    <view class="section nutrition-section">
+      <view class="section-title">📊 营养信息 (每份)</view>
+      <view class="nutrition-grid">
+        <view class="nutrition-item">
+          <text class="nutrition-value">{{product.nutrition.calories}}</text>
+          <text class="nutrition-label">卡路里(kcal)</text>
+        </view>
+        <view class="nutrition-item">
+          <text class="nutrition-value">{{product.nutrition.protein}}g</text>
+          <text class="nutrition-label">蛋白质</text>
+        </view>
+        <view class="nutrition-item">
+          <text class="nutrition-value">{{product.nutrition.carbs}}g</text>
+          <text class="nutrition-label">碳水化合物</text>
+        </view>
+        <view class="nutrition-item">
+          <text class="nutrition-value">{{product.nutrition.fat}}g</text>
+          <text class="nutrition-label">脂肪</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-action">
+    <view class="action-btn cart-btn" bindtap="addToCart">
+      <text class="btn-text">🛒 加入购物车</text>
+    </view>
+    <view class="action-btn buy-btn" bindtap="buyNow">
+      <text class="btn-text">💳 立即购买</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+<view class="container">
+  <!-- 轮播图区域 -->
+  <swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
+    <block wx:for="{{bannerList}}" wx:key="id">
+      <swiper-item>
+        <view class="banner-item">
+          <view class="banner-content">
+            <text class="banner-icon">☕</text>
+            <text class="banner-title">{{item.title}}</text>
+            <text class="banner-subtitle">{{item.subtitle}}</text>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 推荐商品 -->
+  <view class="recommend-section">
+    <view class="section-header">
+      <text class="section-title">为你推荐</text>
+    </view>
+    <view class="recommend-list">
+      <block wx:for="{{recommendList}}" wx:key="id">
+        <view class="recommend-item" bindtap="viewProductDetail" data-id="{{item.id}}">
+          <view class="product-image">☕</view>
+          <view class="product-info">
+            <text class="product-name">{{item.name}}</text>
+            <text class="product-desc">{{item.desc}}</text>
+            <view class="product-footer">
+              <text class="product-price">¥{{item.price}}</text>
+              <button class="add-btn round-btn" bindtap="addToCart" data-id="{{item.id}}" catchtap="stopTap">+</button>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

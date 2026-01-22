@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="order-list">
+    <block wx:for="{{orderList}}" wx:key="id">
+      <view class="order-item" bindtap="viewOrderDetail" data-id="{{item.id}}">
+        <view class="order-header">
+          <text class="order-title">{{item.title}}</text>
+          <text class="order-status {{item.status === '已完成' ? 'completed' : 'processing'}}">{{item.status}}</text>
+        </view>
+        <view class="order-info">
+          <text class="order-date">📅 {{item.date}}</text>
+          <text class="order-price">💰 ¥{{item.price * item.count}}</text>
+        </view>
+        <view class="order-footer">
+          <text class="order-count">📦 数量: {{item.count}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

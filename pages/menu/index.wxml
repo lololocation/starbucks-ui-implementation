@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="menu-container">
+    <!-- 左侧分类栏 -->
+    <scroll-view class="left-category" scroll-y="true">
+      <block wx:for="{{categoryList}}" wx:key="id">
+        <view 
+          class="category-item {{currentIndex == index ? 'active' : ''}}" 
+          data-index="{{index}}"
+          data-id="{{item.id}}"
+          bindtap="switchCategory"
+        >
+          <text class="category-name">{{item.name}}</text>
+          <text class="category-en-name">{{item.enName}}</text>
+        </view>
+      </block>
+    </scroll-view>
+
+    <!-- 右侧商品列表 -->
+    <scroll-view 
+      class="right-product" 
+      scroll-y="true" 
+      scroll-top="{{scrollTop}}"
+      scroll-with-animation="true"
+      scroll-into-view="{{toView}}"
+      bindscroll="onRightScroll"
+      scroll-with-upper="true"
+    >
+      <block wx:for="{{productList}}" wx:key="categoryId">
+        <view class="product-section" id="section-{{categoryList[index].id}}">
+          <view class="section-header">
+            <text class="section-title">{{categoryList[index].name}}</text>
+            <text class="section-en-title">{{categoryList[index].enName}}</text>
+          </view>
+          
+          <block wx:for="{{item.products}}" wx:key="id">
+            <view class="product-item" bindtap="viewProductDetail" data-id="{{item.id}}">
+              <view class="product-image">☕</view>
+              <view class="product-info">
+                <view class="product-name">{{item.name}}</view>
+                <view class="product-desc">{{item.desc}}</view>
+                <view class="product-footer">
+                  <text class="product-price">¥{{item.price}}</text>
+                  <button class="add-btn round-btn" bindtap="addToCart" data-id="{{item.id}}" catchtap="stopTap">+</button>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
