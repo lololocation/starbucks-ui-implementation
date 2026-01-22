@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="cart-header">
+    <text class="cart-icon">🛒</text>
+    <text class="cart-title">购物车</text>
+    <text class="cart-count">({{totalQuantity}})</text>
+    <view class="clear-btn" bindtap="clearCart" wx:if="{{cartItems.length > 0}}">🗑️ 清空购物车</view>
+  </view>
+
+  <view class="cart-list">
+    <block wx:for="{{cartItems}}" wx:key="id">
+      <view class="cart-item">
+        <view class="product-image">☕</view>
+        <view class="product-info">
+          <text class="product-name">{{item.name}}</text>
+          <text class="product-size">📏 规格: {{item.size}}</text>
+          <text class="product-price">💰 ¥{{item.price}}</text>
+        </view>
+        <view class="quantity-control">
+          <view class="quantity-btn" bindtap="decreaseQuantity" data-index="{{index}}">-</view>
+          <view class="quantity-num">{{item.quantity}}</view>
+          <view class="quantity-btn" bindtap="increaseQuantity" data-index="{{index}}">+</view>
+        </view>
+      </view>
+    </block>
+
+    <view class="empty-cart" wx:if="{{cartItems.length == 0}}">
+      <text>🛒 购物车空空如也</text>
+    </view>
+  </view>
+
+  <view class="cart-footer" wx:if="{{cartItems.length > 0}}">
+    <view class="total-info">
+      <text class="total-text">合计: ¥{{totalPrice}}</text>
+    </view>
+    <view class="checkout-btn" bindtap="checkout">💳 去结算</view>
+  </view>
+</view>

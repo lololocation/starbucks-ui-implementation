@@ -1,0 +1,31 @@
+<view class="container">
+  <!-- 用户信息区域 -->
+  <view class="user-card">
+    <view class="user-info">
+      <view class="avatar">👤</view>
+      <view class="user-detail">
+        <text class="nick-name">{{userInfo.nickName}}</text>
+        <view class="member-info">
+          <text class="member-level">🌟 {{userInfo.memberLevel}}</text>
+          <text class="points">积分: {{userInfo.points}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 服务列表 -->
+  <view class="service-section">
+    <block wx:for="{{serviceList}}" wx:key="id">
+      <view class="service-item">
+        <text class="service-icon">{{item.icon}}</text>
+        <text class="service-name">{{item.name}}</text>
+        <text class="arrow">></text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 底部信息 -->
+  <view class="footer-info">
+    <text class="version">版本: 1.0.0</text>
+  </view>
+</view>

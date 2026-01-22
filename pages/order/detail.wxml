@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="order-detail-card">
+    <view class="order-status-bar">
+      <text class="status-text {{orderInfo.status === '已完成' ? 'completed' : 'processing'}}">{{orderInfo.status}}</text>
+    </view>
+    
+    <view class="order-basic-info">
+      <view class="product-item">
+        <view class="product-image">产品图</view>
+        <view class="product-info">
+          <view class="product-name">{{orderInfo.title}}</view>
+          <view class="product-footer">
+            <text class="product-price">¥{{orderInfo.price}}</text>
+            <text class="product-count">×{{orderInfo.count}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <view class="order-meta-info">
+        <view class="info-row">
+          <text class="label">订单编号</text>
+          <text class="value">STB202601180001</text>
+        </view>
+        <view class="info-row">
+          <text class="label">下单时间</text>
+          <text class="value">{{orderInfo.date}} 14:30</text>
+        </view>
+        <view class="info-row">
+          <text class="label">备注</text>
+          <text class="value">{{orderInfo.remark}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="delivery-info card">
+    <view class="section-title">配送信息</view>
+    <view class="info-row">
+      <text class="label">收货地址</text>
+      <text class="value">{{orderInfo.address}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">联系电话</text>
+      <text class="value">{{orderInfo.phone}}</text>
+    </view>
+  </view>
+</view>
